@@ -2,8 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <title>{% block title %}Recherche{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22>
+            <text y=%221.2em%22 font-size=%2296%22>⚫️</text>
+            <text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text>
+        </svg>">
         {% block stylesheets %}
         {% endblock %}
 
@@ -12,6 +15,37 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header>
+            <a href="{{ path('accueil') }}" class="block-logo">
+                <img src="{{asset('images/logo.png')}}" alt="logo" class="logo">
+                <h1>Fancy</h1>
+            </a>
+            <div class="block-search-panier">
+                <form action="{{ path('recherche') }}" method="get" 
+                    class="search-form">
+                    <input type="text" name="recherche" placeholder="Rechercher..." 
+                        class="search-input" required>
+                    <button type="submit" class="search-button">
+                        <img src="{{asset('images/recherche.png')}}" alt="panier"  
+                            class="recherche">
+                    </button>
+                </form>
+                <a href="{{ path('panier') }}" class="block-panier">
+                    <img src="{{asset('images/panier.png')}}" alt="panier" 
+                        class="panier">
+                </a>
+            </div>
+        </header>
+
+        {% block body %}
+        {% endblock %}
+
+        <footer>
+            <div class="block-footer-gauche">
+                <a href="{{ path('accueil') }}" class="footer-accueil">Accueil</a>
+               <a href="{{ path('panier') }}" class="footer-panier">Panier</a>
+            </div>
+            <a href="{{ path('accueil') }}" class="footer-fancy">Fancy</a>
+        </footer>
     </body>
 </html>

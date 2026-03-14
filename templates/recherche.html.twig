@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats de la recherche{% endblock %}
+
+{% block body %}
+    {% if produits is empty %}
+        <p>Aucun produit trouvé pour cette recherche.</p>
+    {% else %}
+        <div class="page">
+            {% for i in produits %}
+                <div class="block">
+                    <div class="sous-block">
+                        <h3>{{ i.nom }}</h3>
+                        <p> {{ i.prix }}€</p>
+                        <p>{{ i.description }}</p>
+                        <a href="{{ path('produit', { 'id' : i.id })}}" class="button">
+                            En savoir plus 
+                        </a>
+                    </div>
+                    <img src="{{ path('produit_image', {'id': i.id}) }}" 
+                        alt="Image du produit" class="image">
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

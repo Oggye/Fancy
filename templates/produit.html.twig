@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ produit.nom }}
+{% endblock %}
+
+{% block body %}
+    <div class="produit">
+        <div class="block-image">
+            <img src="{{ path('produit_image', {'id': produit.id}) }}" 
+                alt="Image du produit" class="image-produit">
+            <img src="{{ path('produit_image', {'id': produit.id}) }}" 
+                alt="Image du produit" class="image-produit">
+            <img src="{{ path('produit_image', {'id': produit.id}) }}" 
+                alt="Image du produit" class="image-produit">
+        </div>
+        <div class="block-produit">
+            <h3>{{ produit.nom }}</h3>
+            <p>{{ produit.prix }}€</p>
+            <form action="{{ path('ajouter', {'produitId': produit.id}) }}" 
+                method="post">
+                <button type="submit" class="ajouter">Ajouter au panier</button>
+            </form>
+            <p>{{ produit.description }}</p>
+        </div>
+    </div>
+{% endblock %}
